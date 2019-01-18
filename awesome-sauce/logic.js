@@ -2,6 +2,9 @@ $(document).ready(function () {
     $('.modal').modal();
     firebase.auth().signOut();
 });
+$(document).ready(function(){
+    $('select').formSelect();
+  });
 
 // Initialize Firebase
 var config = {
