@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Store Items</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+              <a href="index.html" class="brand-logo center">Fortnite Companion</a>
+              <ul class="left hide-on-med-and-down">
+                <li><a href="items.html">Items Store</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li class="active"><a href="collapsible.html">Daily Store</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+  <div class="container">
+    <table id="example"  cellspacing="0" width="100%">
+        <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Cost</th>
+              <th>Type</th>
+              <th>Skin</th>
+            </tr>
+        </thead>
+    </table>
+  </div>
+  <div class ="row" height="30px">
+
+  </div>
+</body>
+    <script>
+    $(document).ready(function (){
+        var items =[];
+        var data;
+    var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://fortnite-public-api.theapinetwork.com/prod09/items/list",
+  "method": "GET"
+}
+$.ajax(settings).done(function (response) {
+  console.log(response)
+    for(x=0;x<response.length;x++){
+  items.push(response[x]);
+  //console.log(audits)
+}
+console.log(items)
+var json = {
+  BrowserStats : items
+};
+var data = jQuery.map(json.BrowserStats, function(el, i) {
+  return [[el.name, '<td width="20">'+el.description+'</td>', el.cost, el.type,'<img height="42" width="42" src="'+el.images.info+'">']];
+});
+$('#example').dataTable( {
+  "aaData": data,
+  "aoColumns": [
+    { "sTitle": "Name" },
+    { "sTitle": "Description" },
+    { "sTitle": "Cost" },
+    { "sTitle": "Type"},
+    { "sTitle": "Skin"}
+  ]
+});
+});
+});
+    </script>
+</html>
