@@ -2,9 +2,9 @@ $(document).ready(function () {
     $('.modal').modal();
     firebase.auth().signOut();
 });
-$(document).ready(function(){
+$(document).ready(function () {
     $('select').formSelect();
-  });
+});
 
 // Initialize Firebase
 var config = {
@@ -14,8 +14,8 @@ var config = {
     projectId: "project2-7c927",
     storageBucket: "project2-7c927.appspot.com",
     messagingSenderId: "40852562411"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
 
 const txtEmail = document.getElementById('email');
@@ -54,12 +54,12 @@ btnLogout.addEventListener('click', e => {
 });
 
 //User dependant functions
-    var user;
-    var firebaseUser;
-    var email, uid;
-firebase.auth().onAuthStateChanged(function(user) {
+var user;
+var firebaseUser;
+var email, uid;
+firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      // User is signed in.
+        // User is signed in.
         loggedIn = true;
         btnLogout.classList.remove('hide');
         btnLogin1.classList.add('hide');
@@ -88,18 +88,18 @@ firebase.auth().onAuthStateChanged(function(user) {
             };
         });
     } else {
-      // User is signed out.
+        // User is signed out.
         loggedIn = false;
         btnLogout.classList.add('hide');
         btnLogin1.classList.remove('hide');
         $("#welcome").text(" ");
     }
-  });
+});
 
-  //Storing event in firebase
-    
+//Storing event in firebase
 
-  $(document).on("click", ".favorite", function () {
+
+$(document).on("click", ".favorite", function () {
     if (loggedIn) {
         database.ref().child('users').child(uid).set({
             email: user.email,
@@ -127,6 +127,3 @@ firebase.auth().onAuthStateChanged(function(user) {
         this.className = "btn disabled";
     };
 });
-
-
-
