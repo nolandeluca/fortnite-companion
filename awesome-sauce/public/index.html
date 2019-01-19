@@ -16,7 +16,18 @@
 </head>
 
 <body>
-
+    <div class="row">
+    <nav>
+        <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo center">Fortnite Companion</a>
+          <ul class="left hide-on-med-and-down">
+            <li><a href="items.html">Items Store</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li class="active"><a href="collapsible.html">Daily Store</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
     <div class="container">
         <p id="demo"></p>
         <div class="row">
@@ -26,10 +37,15 @@
                         <input placeholder="Placeholder" id="userid" type="text" class="validate" name="userid">
                         <label for="first_name">User Name</label>
                     </div>
+
                     <div class="input-field col s6">
                         <input placeholder="Placeholder" id="kills" type="text" class="validate" name="kills" readonly>
                         <label for="first_name">Kills</label>
                     </div>
+
+                </div>
+
+                <div class="row">
 
                 </div>
 
@@ -66,6 +82,15 @@
                     </button>
 
                 </div>
+                <label>Browser Select</label>
+                <select class="browser-default">
+                    <option value="" disabled selected>Choose your Platform</option>
+                    <option value="pc">PC</option>
+                    <option value="ps4">PS4</option>
+                    <option value="3">Xbox</option>
+                    <option value="4">Nintendo Switch</option>
+                    <option value="5">Mobile</option>
+                </select>
             </form>
         </div>
         <div class="row">
@@ -111,12 +136,19 @@
             console.log(response.platforms[1])
             //$("#userid").val(response.uid);
             user_id = response.uid;
-            setTimeout(showstats, 3);
+              setTimeout(showstats, 3);
+            for (i = 0; i < response.platforms.length; i++) {
+                $(".browser-default").append('<option>' + response.platforms[i] + '</option>');
+                console.log($(".browser-default").val());
+            }
         });
     })
 
+
+
+
     function showstats() {
-        var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=" + user_id + "&platform=pc";
+        var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=" + user_id + "&platform=ps4";
         var html = "";
         $.ajax({
             url: queryURL,

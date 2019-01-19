@@ -26,6 +26,24 @@ module.exports = function(app){
           res.json(dbStat);
         });
       });
+
+        // PUT route for updating posts
+  app.put("/api/stats", function(req, res) {
+    db.Stat.update({
+    kills: req.body.kills,
+    wins: req.body.wins,
+    matchesplayed:req.body.matchesplayed,
+    kd:req.body.kd
+    },
+      {
+        where: {
+          userid: req.body.userid
+        }
+      })
+      .then(function(dbStat) {
+        res.json(dbStat);
+      });
+  });
 }
 
 

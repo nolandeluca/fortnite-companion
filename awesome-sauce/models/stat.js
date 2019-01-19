@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var Stat = sequelize.define("Stat", {
     userid: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
       validate: {
         len: [1]
