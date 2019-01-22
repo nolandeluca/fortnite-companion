@@ -7,27 +7,86 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
+    
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <title>Fortnite Companion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
 </head>
 
 <body>
-    <div class="row">
-    <nav>
-        <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo center">Fortnite Companion</a>
-          <ul class="left hide-on-med-and-down">
-            <li><a href="items.html">Items Store</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li class="active"><a href="collapsible.html">Daily Store</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+        <nav>
+                <div class="nav-extended">
+                    <ul class="center hide-on-down">
+                        <div class=logo>
+                            <img src="../resources/fornite image.png" id="logo"> </a>
+                        </div>
+                        <div class="nav-content">
+                            <ul class="tabs tabs-transparent">
+                                <li class="tab"><a href="#test1">Friend Finder</a></li>
+                                <li class="tab"><a href="#test2">Store Tracker</a></li>
+                                <li class="tab"><a href="#test3">Challenges</a></li>
+                                <li class="tab"><a href="#test4">My Items</a></li>
+                                
+                                <div class="login-div">
+                                    <li id="welcome"></li>
+                                    <li><a class="waves-effect waves-light btn modal-trigger" id="login1" href="#modal1">Login</a></li>
+                                    <li><a class="waves-effect waves-light btn hide" id="btnlogout">Log out</a></li>
+                                </div>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container">
+                    <div class="none-for-now">
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <div class="row">
+                                    <div class="row z-depth-6 card-panel">
+                                        <form class="login-form">
+                                            <h3>Account Login</h3>
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <i class="material-icons prefix">mail_outline</i>
+                                                    <input class="validate" id="email" type="email">
+                                                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <i class="material-icons prefix">lock_outline</i>
+                                                    <input id="password" type="password">
+                                                    <label for="password">Password</label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="row">
+                                            <div class="center-align">
+                                                <a href="#" class="btn waves-effect waves-light modal-action modal-close" id="btnlogin">Login
+                                                    <i class="material-icons right">vpn_key</i>
+                                                </a>
+                                                <a href="#" class="btn waves-effect waves-light modal-action modal-close" id="btnsignup">Sign
+                                                    Up
+                                                    <i class="material-icons right">account_circle</i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
     <div class="container">
         <p id="demo"></p>
         <div class="row">
@@ -87,7 +146,7 @@
                     <option value="" disabled selected>Choose your Platform</option>
                     <option value="pc">PC</option>
                     <option value="ps4">PS4</option>
-                    <option value="3">Xbox</option>
+                    <option value="xb1">Xbox</option>
                     <option value="4">Nintendo Switch</option>
                     <option value="5">Mobile</option>
                 </select>
@@ -148,7 +207,7 @@
 
 
     function showstats() {
-        var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=" + user_id + "&platform=ps4";
+        var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=" + user_id + "&platform=";
         var html = "";
         $.ajax({
             url: queryURL,
