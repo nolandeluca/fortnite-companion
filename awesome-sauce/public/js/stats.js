@@ -1,41 +1,30 @@
-var i = 0;
-var txt = 'Fornite Companion.';
-var speed = 50;
 var user_id;
 var killStats = [];
 
-
-function typeWriter() {
-    if (i < txt.length) {
-        document.getElementById("demo").innerHTML += txt.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
-    }
-}
-//typeWriter()
-
-
 $("#stat").on('click', function (e) {
+    platform = $(".browser-default").val()
     //delucanolan
     e.preventDefault();
     var username = $("#userid").val().trim();
     var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/users/id?username=" + username;
-    var html = "";
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         console.log(response.uid)
-        console.log(response.platforms[1])
-        //$("#userid").val(response.uid);
         user_id = response.uid;
-        setTimeout(showstats, 3);
+     
+        setTimeout(showstats, 15);
+
     });
 })
 
+
+
+
 function showstats() {
-    var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=" + user_id +
-        "&platform=pc";
+    console.log(platform)
+    var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=" + user_id + "&platform=" + platform;
     var html = "";
     $.ajax({
         url: queryURL,

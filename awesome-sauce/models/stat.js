@@ -30,7 +30,21 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     kd: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    platform: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    loginid: {
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]

@@ -1,41 +1,59 @@
-// $.ajax({
-//     url: 'api/todos',
-//     method: "GET"
-//   }).then(function(response) {
-//       console.log(response)
-
-//   });
 $(document).ready(function () {
   $(".todo-container").empty();
   setTimeout(getTodos, 100);
   function getTodos() {
     $.get("/api/stats", function (data) {
-      console.log(data)
       for (i = 0; i < data.length; i++) {
-        $(".todo-container").prepend('<p>' + data[i].userid + '</p>');
+        $(".users").prepend('<tr><td>' + data[i].userid + '</td><td>' + data[i].platform.toUpperCase() + '</td><td>' + data[i].createdAt.substring(0,10) + '</td></tr>');
+
       }
     });
   }
 
-  //getTodos();
-  $("#save").on("click", postTodos);
+  $("#search").on("click",getStatPlatform);
+function getStatPlatform(){
+  $(".platformlist").empty();
+ var platform=$("#platform").val();
+  $.get("/api/stats/"+platform, function (data) {
 
+    for (i = 0; i < data.length; i++) {
+      $(".platformlist").prepend('<tr><td>' + data[i].userid + '</td><td>' + data[i].matchesplayed + '</td><td>' + data[i].createdAt.substring(0,10) + '</td></tr>');
+
+    }
+  });
+}
+$("#save").on("click", function(){
+  event.preventDefault();
+  console.log($("#welcome").html());
+   if($("#welcome").html() == " "){
+
+     $("#thislogin").text('Login to save your result - Click Here')
+   }
+   else{
+    postTodos();
+   }
+});
+
+ 
 
   function postTodos() {
-    event.preventDefault();
-    checkDuplicates();
+   
+     checkDuplicates();
     var todo = {
       userid: $("#userid").val(),
       kills: $("#kills").val(),
       wins: $("#wins").val(),
       matchesplayed: $("#matches_played").val(),
-      kd: $("#kd").val()
-     
+      kd: $("#kd").val(),
+      platform:$("#platform").val(),
+      loginid:$("#welcome").html().slice(9)
+//      document.getElementById('welcome').innerHTML
     };
     $.post("/api/stats", todo, function (dbStat) {
-      console.log(dbStat);
+  
       $(".todo-container").empty(); 
-      //checkDuplicates();
+      alert("Added")
+  
     });
   }
 
@@ -50,13 +68,14 @@ $(document).ready(function () {
      
     };
     $.get("/api/stats", function (data) {
+     console.log("Reached here")
       for (i = 0; i < data.length; i++) {
         console.log(data[i].username);
         if(data[i].username=$("#userid").val())
         {
           
           updateStat(todo);
-          console.log('Already Exists')
+          break;
         }
         else{
           getTodos();
@@ -73,7 +92,7 @@ $(document).ready(function () {
       
     })
       .then(function() {
-       console.log('Added');
+        
       });
   }
 
