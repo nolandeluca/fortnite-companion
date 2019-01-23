@@ -78,6 +78,12 @@
             </div>
             <div class="space"></div>
             <div class="container">
+                    <h4>Fornite Stats</h4>
+                <hr/>
+                <br/>
+                <blockquote>
+                        Enter your username and Choose your platform to view your stats.
+                      </blockquote>
                     <p id="demo"></p>
                     <div class="row">
                         <form class="col s12">
@@ -87,10 +93,7 @@
                                     <label for="first_name">User Name</label>
                                 </div>
             
-                                <div class="input-field col s6">
-                                    <input placeholder="Placeholder" id="kills" type="text" class="validate" name="kills">
-                                    <label for="first_name">Kills</label>
-                                </div>
+                              
             
                             </div>
             
@@ -106,10 +109,18 @@
                                             <label>Platform Select</label>
                                         </select>
                                     </div>
+                                    <br/>
+                                    <button class="btn waves-effect waves-light" type="submit" name="action" id="stat">Let's see your game stats
+                                    
+                                        </button>
                                 </div>
-            
+                                    <hr/>
+                                    <h4 id= "yourstats">Stats</h4><a href="#login1">(login to save your stats)</a>
                             <div class="row">
-            
+                                    <div class="input-field col s6">
+                                            <input placeholder="Placeholder" id="kills" type="text" class="validate" name="kills">
+                                            <label for="first_name">Kills</label>
+                                        </div>
                             </div>
             
                             <div class="row">
@@ -135,9 +146,9 @@
             
                             </div>
                             <div class="row">
-                                <button class="btn waves-effect waves-light" type="submit" name="action" id="stat">Search Stat
-                                    
-                                </button>
+                               <a href="#login1" id="thislogin" style="color:red"></a>
+                               <br/>
+                               <br/>
                                 <button class="btn waves-effect waves-light" type="submit" name="action" id="save">Save<i class="material-icons">
                                         done
                                     </i>

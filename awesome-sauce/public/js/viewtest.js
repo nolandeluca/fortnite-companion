@@ -22,21 +22,32 @@ function getStatPlatform(){
     }
   });
 }
+$("#save").on("click", function(){
+  event.preventDefault();
+  console.log($("#welcome").html());
+   if($("#welcome").html() == " "){
 
-  $("#save").on("click", postTodos);
+     $("#thislogin").text('Login to save your result - Click Here')
+   }
+   else{
+    postTodos();
+   }
+});
 
+ 
 
   function postTodos() {
-    event.preventDefault();
-    // checkDuplicates();
+   
+     checkDuplicates();
     var todo = {
       userid: $("#userid").val(),
       kills: $("#kills").val(),
       wins: $("#wins").val(),
       matchesplayed: $("#matches_played").val(),
       kd: $("#kd").val(),
-      platform:$("#platform").val()
-     
+      platform:$("#platform").val(),
+      loginid:$("#welcome").html().slice(9)
+//      document.getElementById('welcome').innerHTML
     };
     $.post("/api/stats", todo, function (dbStat) {
   
@@ -64,6 +75,7 @@ function getStatPlatform(){
         {
           
           updateStat(todo);
+          break;
         }
         else{
           getTodos();
@@ -80,6 +92,7 @@ function getStatPlatform(){
       
     })
       .then(function() {
+        
       });
   }
 

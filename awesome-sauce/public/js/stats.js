@@ -13,7 +13,8 @@ $("#stat").on('click', function (e) {
     }).then(function (response) {
         console.log(response.uid)
         user_id = response.uid;
-        setTimeout(showstats, 3);
+     
+        setTimeout(showstats, 15);
 
     });
 })

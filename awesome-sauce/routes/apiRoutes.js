@@ -19,6 +19,16 @@ module.exports = function(app){
     });
   });
 
+  app.get("/api/stats/:loginid", function(req, res) {
+    db.Stat.findAll({
+      where: {
+        loginid: req.params.loginid
+      }
+    }).then(function(dbStat) {
+      res.json(dbStat);
+    });
+  });
+
 
 //POST the values to DB
     app.post("/api/stats", function(req, res) {
@@ -29,7 +39,8 @@ module.exports = function(app){
           wins:req.body.wins,
           matchesplayed:req.body.matchesplayed,
           kd:req.body.kd,
-          platform:req.body.platform
+          platform:req.body.platform,
+          loginid:req.body.loginid
         }).then(function(dbStat) {
           res.json(dbStat);
         });
