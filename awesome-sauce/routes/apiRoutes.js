@@ -19,6 +19,7 @@ module.exports = function(app){
     });
   });
 
+
   app.get("/api/stats/:loginid", function(req, res) {
     db.Stat.findAll({
       where: {
@@ -30,6 +31,7 @@ module.exports = function(app){
   });
 
 
+
 //POST the values to DB
     app.post("/api/stats", function(req, res) {
     
@@ -39,8 +41,10 @@ module.exports = function(app){
           wins:req.body.wins,
           matchesplayed:req.body.matchesplayed,
           kd:req.body.kd,
+
           platform:req.body.platform,
           loginid:req.body.loginid
+
         }).then(function(dbStat) {
           res.json(dbStat);
         });
