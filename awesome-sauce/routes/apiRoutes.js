@@ -1,19 +1,26 @@
-// Require the model
-
 var db = require("../models");
 
 //GET
 module.exports = function(app){
-  // GET route for getting all of the todos
-  app.get("/api/stats", function(req, res) {
-    // findAll returns all entries for a table when used with no options
+  app.get("/api/stats/", function(req, res) {
     db.Stat.findAll({}).then(function(dbStat) {
-      // We have access to the todos as an argument inside of the callback function
       console.log(dbStat);
       res.json(dbStat);
     });
   });
+//GET BY PLATFORM
+  app.get("/api/stats/:platform", function(req, res) {
+    db.Stat.findAll({
+      where: {
+        platform: req.params.platform
+      }
+    }).then(function(dbStat) {
+      res.json(dbStat);
+    });
+  });
 
+
+//POST the values to DB
     app.post("/api/stats", function(req, res) {
     
         db.Stat.create({
@@ -21,7 +28,8 @@ module.exports = function(app){
           kills: req.body.kills,
           wins:req.body.wins,
           matchesplayed:req.body.matchesplayed,
-          kd:req.body.kd
+          kd:req.body.kd,
+          platform:req.body.platform
         }).then(function(dbStat) {
           res.json(dbStat);
         });
@@ -45,93 +53,3 @@ module.exports = function(app){
       });
   });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var db = require("../models");
-
-// module.exports = function(app) {
-//   // Get all examples
-//   app.get("/api/examples", function(req, res) {
-//     db.Example.findAll({}).then(function(dbExamples) {
-//       res.json(dbExamples);
-//     });
-//   });
-
-//   // Create a new example
-//   app.post("/api/examples", function(req, res) {
-//     db.Example.create(req.body).then(function(dbExample) {
-//       res.json(dbExample);
-//     });
-//   });
-
-//   // Delete an example by id
-//   app.delete("/api/examples/:id", function(req, res) {
-//     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-//       res.json(dbExample);
-//     });
-//   });
-// };
-
-
-// var db = require("../models");
-
-// module.exports = function(app) {
-//   // Get all examples
-//   app.get("/api/examples", function(req, res) {
-//     db.Example.findAll({}).then(function(dbExamples) {
-//       res.json(dbExamples);
-//     });
-//   });
-
-  // Create a new example
-  // app.post("/api/examples", function(req, res) {
-  //   db.Example.create(req.body).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
-
-  // // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
-//};
