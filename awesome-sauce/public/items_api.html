@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Fornite Items API</title>
+  <!-- <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script> -->
+  <script src="cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./public/styles/style.css">
+
+</head>
+<style>
+    td{
+        width:20%;
+    }
+</style>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+<!-- Table Structure -->
+<table class="ui striped orange table" id = "myTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Cost</th>
+        <th>Type</th>
+        <th>Skin</th>
+      </tr>
+    </thead>
+    <tbody class="response">
+
+    </tbody>
+    </table>
+</body>
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+    // Example queryURL for Giphy API
+    var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/store/get?language=en";
+    var html="";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+        console.log(response)
+        for(i=0;i<response.items.length;i++){
+        console.log(response.items.length)
+   //   console.log(response[i].name);
+     // console.log(response[i].description);
+      //console.log(response[i].cost);
+      //console.log(response[i].type);
+      console.log(response.items[i].name)
+      console.log(response.items[i].item.type)
+       html = '<tr><td width="20%">'+response.items[i].name+'</td><td width="20%">'+response.items[i].name+'</td><td width="10%">'+response.items[i].cost+'</td><td class="positive">'+response.items[i].item.type+'</td><td><img height="42" width="42" src='+response.items[i].cost+'></td></tr>'
+    $(".response").prepend(html);
+}
+    });
+    
+    
+  </script>
+</html>
