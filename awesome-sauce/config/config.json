@@ -3,13 +3,13 @@
     "username": "root",
     "password": "root",
     "database": "fortnite_db",
-    "port": 8889,
+    "port": 3306,
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "root",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
