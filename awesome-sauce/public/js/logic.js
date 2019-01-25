@@ -2,7 +2,7 @@ src="apiRoutes.js"
 
 $(document).ready(function () {
     $('.modal').modal();
-    firebase.auth().signOut();
+    // firebase.auth().signOut();
 });
 $(document).ready(function(){
     $('select').formSelect();
@@ -71,7 +71,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         var uid = user.uid;
         //-----------------
         console.log("WORKING!" + user.email);
-        window.alert("Welcome " + user.email)
+        // window.alert("Welcome " + user.email)
         database.ref('users/' + uid).on("value", function (snapshot) {
             var sv = snapshot.val();
             //console.log("snapshot works: " + sv.email);
