@@ -1,23 +1,27 @@
 # Fortnite Companion
 <hr/>
-The Fortnite Companion app, for all the lovers of the game.
 
-The app lets you 
-<li>Search by <b>username</b> for stats on any platform that you play on.</li>
+#### Project Overview 
+The Fortnite Companion app is for players to check a users game stats.
+<hr/>
+
+#### How it works
+<li>Search by your fortnite <b>username</b> for stats on any platform that you play on.</li>
 <li>Track new items in Store</li>
 <li>Search for skins available</li>
-<li>Store stats on Database to compare stats later</li>
+<li>Save stats to compare game stats later</li>
+<hr/>
 
-Technologies Used
-<a href="#">Materialize CSS</a>
-<a href="#">NodeJS</a>
-<a href="#">Express</a>
-<a href="#">MySQL</a>
-<a href="#">ChartJS</a>
-<a href="#">MomentJS</a>
-<a href="#">Datatables</a>
-<a href="#">Sequelize</a>
-<a href="#">ESLint</a>
-
+#### Technologies Used
+<li>Materialize CSS</li>
+<li>NodeJS</li>
+<li>Express</li>
+<li>MySQL</li>
+<li>ChartJS</li>
+<li>MomentJS</li>
+<li>Datatables</li>
+<li>Sequelize</li>
+<li>ESLint</li>
+<hr/>
 
 
