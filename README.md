@@ -1,6 +1,10 @@
 # Fortnite Companion
 <hr/>
 
+## APP is live!
+https://fortnitecompanion.herokuapp.com
+<hr/>
+
 #### Project Overview 
 The Fortnite Companion app is for players to check a users game stats.
 <hr/>
