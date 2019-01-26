@@ -1,7 +1,7 @@
 # Fortnite Companion
 <hr/>
 
-## APP is live!
+## App is live!
 https://fortnitecompanion.herokuapp.com
 <hr/>
 
