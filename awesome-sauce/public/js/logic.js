@@ -2,7 +2,7 @@ src="apiRoutes.js"
 
 $(document).ready(function () {
     $('.modal').modal();
-    // firebase.auth().signOut();
+    firebase.auth().signOut();
 });
 $(document).ready(function(){
     $('select').formSelect();
@@ -36,6 +36,7 @@ btnLogin.addEventListener('click', e => {
     const auth = firebase.auth();
     const promise = auth.signInWithEmailAndPassword(email, password);
     promise.catch(e => window.alert(e.message));
+   
 });
 
 //signup
@@ -51,7 +52,7 @@ btnSignup.addEventListener('click', e => {
 
 //logout
 btnLogout.addEventListener('click', e => {
-    console.log("working event listener");
+    // console.log("working event listener");
     firebase.auth().signOut();
 });
 
@@ -69,9 +70,10 @@ firebase.auth().onAuthStateChanged(function(user) {
         $("#welcome").text("welcome: " + user.email);
         var email = user.email;
         var uid = user.uid;
+        getStatlogin()
         //-----------------
         console.log("WORKING!" + user.email);
-        // window.alert("Welcome " + user.email)
+        window.alert("Welcome " + user.email)
         database.ref('users/' + uid).on("value", function (snapshot) {
             var sv = snapshot.val();
             //console.log("snapshot works: " + sv.email);
@@ -129,3 +131,17 @@ firebase.auth().onAuthStateChanged(function(user) {
         this.className = "btn disabled";
     };
 });
+
+function getStatlogin() {
+    var loginid=$("#welcome").html().slice(9)
+    $("#thislogin").text(" ");
+    $.get("/api/stats/login/" +loginid, function (data) {
+console.log(data)
+      for (i = 0; i < data.length; i++) {
+        $("#userid").val(data[i].userid)
+        $("#platform").val(data[i].platform)
+        $("#age").val(data[i].age)
+        $("#gamemode").val(data[i].gamemode)
+      }
+    });
+  }

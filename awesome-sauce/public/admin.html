@@ -15,18 +15,18 @@
 </head>
 
 <body id="body-store-tracker">
-<!-- test -->
+
     <!-- Navigation Bar -->
     <nav>
         <div class="nav-extended">
             <ul class="center hide-on-down">
-                <a href="index.html"> <img src="resources/fornite image.png" alt="fortnite companion logo" id="logo"></a>
+                <a href="html/index.html"> <img src="resources/fornite image.png" alt="fortnite companion logo" id="logo"></a>
                 <ul class="tabs tabs-transparent">
-                    <li class="tab"><a href="friendfinder.html">Friend Finder</a></li>
-                    <li class="tab"><a href="store-tracker.html">Store Tracker</a></li>
-                    <li class="tab"><a href="challenges.html">Challenges</a></li>
-                    <li class="tab"><a href="items.html">My Items</a></li>
-                    <li class="tab"><a href="my-stats.html">My Stats</a></li>
+                    <li class="tab"><a href="./friendfinder.html">Friend Finder</a></li>
+                    <li class="tab"><a href="./store-tracker.html">Store Tracker</a></li>
+                    <li class="tab"><a href="./challenges.html">Challenges</a></li>
+                    <li class="tab"><a href="./items.html">My Items</a></li>
+                    <li class="tab"><a href="./index.html">My Stats</a></li>
                     <div class="login-div">
                         <li id="welcome"></li>
                         <li><a class="waves-effect waves-light btn modal-trigger" id="login1" href="#modal1">Login</a></li>
@@ -122,7 +122,7 @@
                         <thead>
                             <tr>
                                 <th>Username</th>
-                                <th>Matches Played</th>
+                                <th>Login ID</th>
                                 <th>Created Date</th>
                             </tr>
                         </thead>
@@ -173,9 +173,6 @@
     var serverstatus;
     var servermessage;
     var serverversion;
-    var i = 0;
-    var txt;
-    var speed = 50;
 
     function showserverstats() {
         var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/status/fortnite_server_status";

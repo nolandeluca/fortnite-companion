@@ -8,6 +8,9 @@ module.exports = function(app){
       res.json(dbStat);
     });
   });
+
+
+
 //GET BY PLATFORM
   app.get("/api/stats/:platform", function(req, res) {
     db.Stat.findAll({
@@ -20,10 +23,24 @@ module.exports = function(app){
   });
 
 
-  app.get("/api/stats/:loginid", function(req, res) {
+  //GET BY EMAIL
+  app.get("/api/stats/login/:loginid", function(req, res) {
     db.Stat.findAll({
       where: {
         loginid: req.params.loginid
+      }
+    }).then(function(dbStat) {
+      res.json(dbStat);
+    });
+  });
+
+
+//GET Friend by age
+  app.get("/api/stats/age/:age/:gamemode", function(req, res) {
+    db.Stat.findAll({
+      where: {
+        age: req.params.age,
+        gamemode: req.params.gamemode
       }
     }).then(function(dbStat) {
       res.json(dbStat);
@@ -41,7 +58,8 @@ module.exports = function(app){
           wins:req.body.wins,
           matchesplayed:req.body.matchesplayed,
           kd:req.body.kd,
-
+          gamemode:req.body.gamemode,
+          age:req.body.age,
           platform:req.body.platform,
           loginid:req.body.loginid
 
@@ -50,13 +68,18 @@ module.exports = function(app){
         });
       });
 
-        // PUT route for updating posts
+        // PUT route for updating exisiting user info
   app.put("/api/stats", function(req, res) {
     db.Stat.update({
-    kills: req.body.kills,
-    wins: req.body.wins,
-    matchesplayed:req.body.matchesplayed,
-    kd:req.body.kd
+      userid: req.body.userid,
+      kills: req.body.kills,
+      wins:req.body.wins,
+      matchesplayed:req.body.matchesplayed,
+      kd:req.body.kd,
+      gamemode:req.body.gamemode,
+      age:req.body.age,
+      platform:req.body.platform,
+      loginid:req.body.loginid
     },
       {
         where: {
