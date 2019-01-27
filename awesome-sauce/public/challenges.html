@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<html id="html">
 <html lang="en">
+
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
 
-<body>
+<body id="body-store-tracker">
     <nav>
         <nav>
             <div class="nav-extended">
@@ -24,7 +26,7 @@
                         <li class="tab"><a href="friendfinder.html">Friend Finder</a></li>
                         <li class="tab"><a href="store-tracker.html">Store Tracker</a></li>
                         <li class="tab"><a href="challenges.html">Challenges</a></li>
-                        <li class="tab"><a href="items.html">My Items</a></li>
+                        <li class="tab"><a href="items.html">Game Items</a></li>
                         <li class="tab"><a href="my-stats.html">My Stats</a></li>
                         <div class="login-div">
                             <li id="welcome"></li>
@@ -36,7 +38,7 @@
             </div>
         </nav>
 
-    <div class="container">
+        <div class="container">
             <div class="none-for-now">
                 <div id="modal1" class="modal">
                     <div class="modal-content">
@@ -78,45 +80,45 @@
                     </div>
                 </div>
                 <div class="space"></div>
-                <div class= "challenges-table">
-                        <table class="highlight">
-                            <thead>
-                                <tr>
-                                    <th>Challenges</th>
-                                    <th>Stars</th>
-                                    <th>Total</th>
-                                    <th>Difficulty</th>
-                                </tr>
-                            </thead>
-                            <tbody class="response"></tbody>
-                        </table>
-                    </div>
+                <div class="challenges-table">
+                    <table class="highlight">
+                        <thead>
+                            <tr>
+                                <th>Challenges</th>
+                                <th>Stars</th>
+                                <th>Total</th>
+                                <th>Difficulty</th>
+                            </tr>
+                        </thead>
+                        <tbody class="response"></tbody>
+                    </table>
+                </div>
 
-            <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            <script src="js/logic.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+                <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                    crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                <script src="js/logic.js"></script>
 </body>
 <script type="text/javascript">
-        
     var queryURL = "https://fortnite-public-api.theapinetwork.com/prod09/challenges/get?season=current";
-   // var html="";
+    // var html="";
     $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
         console.log(response)
-        for(i=0;i<response.challenges.week8.length ;i++){
-      html = `<tr>
+        for (i = 0; i < response.challenges.week8.length; i++) {
+            html =
+                `<tr>
        <td width="20%">'${response.challenges.week8[i].challenge}</td>
        <td width="20%">${response.challenges.week8[i].stars}</td>
        <td width="10%">${response.challenges.week8[i].total}</td>
        <td class="positive">${response.challenges.week8[i].difficulty}</td>
        </tr>`
-   $(".response").prepend(html);
+            $(".response").prepend(html);
         }
     });
-    
 </script>
+
 </html>

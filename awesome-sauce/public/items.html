@@ -14,20 +14,20 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
 
 <body id="body-store-tracker">
   <nav>
     <div class="nav-extended">
       <ul class="center hide-on-down">
-        <a href="index.html"> <img src="../resources/fornite image.png" alt="fortnite companion logo" id="logo"></a>
+        <a href="index.html"> <img src="resources/fornite image.png" alt="fortnite companion logo" id="logo"></a>
         <ul class="tabs tabs-transparent">
-          <li class="tab"><a href="./friendfinder.html">Friend Finder</a></li>
-          <li class="tab"><a href="./store-tracker.html">Store Tracker</a></li>
-          <!-- <li class="tab"><a href="./challenges.html">Challenges</a></li> -->
-          <li class="tab"><a href="./items.html">My Items</a></li>
-          <li class="tab"><a href="./index.html">My Stats</a></li>
+          <li class="tab"><a href="friendfinder.html">Friend Finder</a></li>
+          <li class="tab"><a href="store-tracker.html">Store Tracker</a></li>
+          <li class="tab"><a href="challenges.html">Challenges</a></li>
+          <li class="tab"><a href="items.html">Game Items</a></li>
+          <li class="tab"><a href="my-stats.html">My Stats</a></li>/a></li>
           <div class="login-div">
             <li id="welcome"></li>
             <li><a class="waves-effect waves-light btn modal-trigger" id="login1" href="#modal1">Login</a></li>
@@ -119,7 +119,7 @@
       var data = jQuery.map(json.BrowserStats, function (el, i) {
         return [
           [el.name, '<td width="20">' + el.description + '</td>', el.cost, el.type,
-            '<img height="42" width="42" src="' + el.images.info + '">'
+            '<img height="42" width="42" src="' + el.images.background + '">'
           ]
         ];
       });
@@ -147,6 +147,6 @@
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
-<script src="../js/logic.js"></script>
+<script src="js/logic.js"></script>
 
 </html>
