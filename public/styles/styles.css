@@ -1,0 +1,46 @@
+.nav-extended {
+  background-color: #1D1F38;
+}
+
+.login-div {
+  background-color: #1D1F38;
+  float: right
+}
+
+h1 {
+  text-align: center;
+}
+
+.list-group-item {
+  line-height: 2.5;
+}
+
+.space {
+  margin-top: 150px;
+}
+
+
+#html {
+
+  background: linear-gradient(#3D5DA8, #1E3372);
+  width: 100vw;
+  height: max-content;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+
+}
+#body-store-tracker {
+  margin-top: 00px;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: white; 
+  height: 100%
+}
+td{
+  width:20%;
+}
+tr {
+  color: black;
+  background-color: white;
+}
